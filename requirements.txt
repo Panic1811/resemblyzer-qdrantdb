@@ -1,0 +1,5 @@
+fastapi
+uvicorn
+resemblyzer
+qdrant-client
+python-multipart
