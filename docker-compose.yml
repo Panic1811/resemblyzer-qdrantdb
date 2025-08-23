@@ -1,12 +1,11 @@
 services:
-
   voice-identity:
     restart: unless-stopped
     build: .
     ports:
       - "8000:8000"
     volumes:
-      - data:/data
+      - voice_identity_data:/data
     depends_on:
       - qdrant
 
@@ -16,6 +15,10 @@ services:
     environment:
       - QDRANT__STORAGE__DATA_PATH=/data/qdrant
     volumes:
-      - data:/data
+      - qdrant_data:/data
     ports:
       - "6333:6333"
+
+volumes:
+  voice_identity_data:
+  qdrant_data:
