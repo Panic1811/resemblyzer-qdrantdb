@@ -26,7 +26,7 @@ def generate_id():
 
 @app.post("/upload_identity")
 async def upload_identity(identity_name: str = Form(...), file: UploadFile = File(...)):
-    if not file.filename.lower().endswith((".wav", ".mp3")):
+    if not file.filename.lower().endswith((".wav", ".mp3", ".m4a")):
         raise HTTPException(status_code=400, detail="Unsupported file type.")
 
     # Save file to persistent storage
