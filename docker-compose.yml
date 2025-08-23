@@ -1,20 +1,20 @@
 services:
   voice-identity:
-    restart: unless-stopped
     build: .
+    restart: unless-stopped
+    ports:
+      - "8000:8000"       # Exposed inside container; Easy Panel can map externally
     volumes:
-      - voice_identity_data:/data
+      - ~/resemblyzer/audio_files:/tmp/resemblyzer   # host folder -> container
     depends_on:
       - qdrant
 
   qdrant:
-    restart: unless-stopped
     image: qdrant/qdrant:latest
+    restart: unless-stopped
     environment:
       - QDRANT__STORAGE__DATA_PATH=/data/qdrant
     volumes:
-      - qdrant_data:/data
-
-volumes:
-  voice_identity_data:
-  qdrant_data:
+      - ~/resemblyzer/qdrant_data:/data              # host folder -> container
+    ports:
+      - "6333:6333"
