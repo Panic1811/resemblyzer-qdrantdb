@@ -3,9 +3,9 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "8000:8000"       # Exposed inside container; Easy Panel can map externally
+      - "8000:8000"
     volumes:
-      - ~/resemblyzer/audio_files:/tmp/resemblyzer   # host folder -> container
+      - audio_files:/tmp/resemblyzer
     depends_on:
       - qdrant
 
@@ -15,6 +15,10 @@ services:
     environment:
       - QDRANT__STORAGE__DATA_PATH=/data/qdrant
     volumes:
-      - ~/resemblyzer/qdrant_data:/data              # host folder -> container
+      - qdrant_data:/data
     ports:
       - "6333:6333"
+
+volumes:
+  audio_files:
+  qdrant_data:
