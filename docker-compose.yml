@@ -3,7 +3,7 @@ services:
     build: .
     restart: unless-stopped
     ports:
-      - "80:8000"  # Host port changed to 8080 to avoid conflicts
+      - "8000:8000"  # Host port changed to 8080 to avoid conflicts
     volumes:
       - ~/resemblyzer/audio_files:/tmp/resemblyzer
     depends_on:
