@@ -15,6 +15,7 @@ services:
     environment:
       - QDRANT__STORAGE__DATA_PATH=/qdrant/storage
     volumes:
-      - ~/resemblyzer/qdrant_data:/qdrant/storage
+      - ~/resemblyzer/audio_files:/tmp/resemblyzer
+      - ~/resemblyzer/identities:/data/identities
     ports:
       - "6334:6333"  # Host port changed to 6334 to avoid conflicts
