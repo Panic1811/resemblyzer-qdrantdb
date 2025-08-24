@@ -5,7 +5,7 @@ services:
     ports:
       - "8000:8000"  # Host port changed to 8080 to avoid conflicts
     volumes:
-      - ~/resemblyzer/audio_files:/tmp/resemblyzer
+      - ~/resemblyzer/identities:/data/identities
     depends_on:
       - qdrant
 
@@ -15,7 +15,6 @@ services:
     environment:
       - QDRANT__STORAGE__DATA_PATH=/qdrant/storage
     volumes:
-      - ~/resemblyzer/audio_files:/tmp/resemblyzer
-      - ~/resemblyzer/identities:/data/identities
+      - ~/resemblyzer/qdrant_data:/qdrant/storage
     ports:
       - "6334:6333"  # Host port changed to 6334 to avoid conflicts
